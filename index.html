@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Fake Store</h1>
+    </header>
+    <div class="welcome-message">
+        <h2>مرحبًا بك في متجرنا الافتراضي!</h2>
+        <p>استعرض أفضل المنتجات بأسعار مذهلة - جميع المنتجات هنا تنتظرك لتكتشفها!</p>
+    </div>
+    <nav>
+        <div class="categories"></div>
+    </nav>
+    <main>
+        <div class="loader">Loading...</div>
+        <div class="products"></div>
+        <div class="pagination"></div>
+    </main>
+    <footer>
+        <p>© 2025 Fake Store. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+        <span class="close" id="closeModal">&times;</span>
+        <div class="modal-content">
+            <span class="prev" id="prevImg">&lt;</span>
+            <img id="modalImage" src="" alt="Product Image">
+            <span class="next" id="nextImg">&gt;</span>
+        </div>
+    </div>
+</body>
+
+
+</html>
