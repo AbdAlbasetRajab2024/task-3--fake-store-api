@@ -28,14 +28,14 @@ function changeImage(direction) {
         }
     }
 }
-
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') {  
+    if (e.key === 'ArrowRight') {
         changeImage('next');
-    } else if (e.key === 'ArrowLeft') { 
+    } else if (e.key === 'ArrowLeft') {
         changeImage('prev');
     }
 });
+
 async function fetchCategories() {
     const res = await fetch('https://fakestoreapi.com/products/categories');
     const categories = await res.json();
@@ -72,7 +72,7 @@ function renderProducts() {
         const div = document.createElement('div');
         div.classList.add('product');
         div.innerHTML = `
-            <img src="${product.image}" alt="${product.title}" width="100" onclick="openModal(${index})">
+            <img src="${product.image}" alt="${product.title}" width="100" onclick="openModal(${start + index})">
             <p><strong>${product.title}</strong></p>
             <p>$${product.price.toFixed(2)}</p>
         `;
@@ -105,13 +105,17 @@ function closeImageModal() {
 }
 
 function showPrevImage() {
-    currentImageIndex = (currentImageIndex - 1 + products.length) % products.length;
-    modalImage.src = products[currentImageIndex].image;
+    if (currentImageIndex > 0) {
+        currentImageIndex--;
+        modalImage.src = products[currentImageIndex].image;
+    }
 }
 
 function showNextImage() {
-    currentImageIndex = (currentImageIndex + 1) % products.length;
-    modalImage.src = products[currentImageIndex].image;
+    if (currentImageIndex < products.length - 1) {
+        currentImageIndex++;
+        modalImage.src = products[currentImageIndex].image;
+    }
 }
 
 closeModal.onclick = closeImageModal;
@@ -122,5 +126,3 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchCategories();
     fetchProducts();
 });
-
-
